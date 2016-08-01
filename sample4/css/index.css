@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
-@media (max-width: 960px) {
-	#inner {
-		max-width: 500px;
-	}
+#inner {
+	max-width: 500px;
 }
 
 #drawArea,

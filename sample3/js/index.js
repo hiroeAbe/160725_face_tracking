@@ -48,11 +48,8 @@
         audio: true
       },
       function (mediaStream) {
-        // videoでWebカメラの映像を表示
-        video.src = URL.createObjectURL(mediaStream);
-        video.play();
-
-        setTimeout(function () {
+        // videoのメタデータの取得が成功
+        video.addEventListener("loadedmetadata", function (event) {
           // videoのサイズを取得
           var videoW = video.clientWidth;
           var videoH = video.clientHeight;
@@ -78,7 +75,10 @@
           ctrack.init(pModel);
           // 顔の検出を開始
           ctrack.start(video);
-        }, 1000);
+        });
+
+        // videoでWebカメラの映像を表示
+        video.src = URL.createObjectURL(mediaStream);
       },
       function (error) {
         console.log("error", error);
